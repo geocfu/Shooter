@@ -30,6 +30,7 @@
 		var explosions;
 		var destroyedSound;
 		var enemy2;
+		var shields;
 
 		var ACCLERATION = 600;
 		var DRAG = 400;
@@ -72,10 +73,14 @@
 
 			//  The hero!
 			player = game.add.sprite(100, game.height / 2, 'ship');
+			player.health = 100;
 			player.anchor.setTo(0.5, 0.5);
 			game.physics.enable(player, Phaser.Physics.ARCADE);
 			player.body.maxVelocity.setTo(MAXSPEED, MAXSPEED);
 			player.body.drag.setTo(DRAG, DRAG);
+			player.events.onKilled.add(function(){
+        		shipTrail.kill();
+    		});
 
 			//  And some controls to play the game with
 			cursors = game.input.keyboard.createCursorKeys();
@@ -109,6 +114,7 @@
 			enemy2.forEach(function(enemy) {
 	        	addEnemyEmitterTrail(enemy);
 				enemy.body.setSize(enemy.width * 3 / 4, enemy.height * 3 / 4);//debugging
+				enemy.damageAmount = 20;
 		        enemy.events.onKilled.add(function() {
 		            enemy.trail.kill();
 		        });
@@ -126,6 +132,12 @@
 		    });
 
 		    launchEnemy2();
+
+			//  Shields stat
+		    shields = game.add.text(game.world.width - 150, 10, 'Shields: ' + player.health +'%', { font: '20px Arial', fill: '#fff' });
+		    shields.render = function () {
+		        shields.text = 'Shields: ' + Math.max(player.health, 0) +'%';
+		    };
 		}
 
 		function update() {
@@ -262,6 +274,8 @@
 		    explosion.play('explosion', 30, false, true);
 		    enemy.kill();
 			destroyedSound.play();
+			player.damage(enemy.damageAmount);
+    		shields.render();
 		}
 
 		function hitEnemy(enemy, bullet) {
