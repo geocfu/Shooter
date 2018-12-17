@@ -528,7 +528,7 @@
 					}
 			
 					function launchBoss() {
-						boss.reset(game.width + 150, game.rnd.integerInRange(150, 450));//--------------------------------
+						boss.reset(game.width + boss.width, game.height / 2);
 						booster.start(false, 1000, 10);
 						boss.health = 501;
 						bossBulletTimer = game.time.now + 5000;
