@@ -96,8 +96,8 @@
 						bullets = game.add.group();
 						bullets.enableBody = true;
 						bullets.physicsBodyType = Phaser.Physics.ARCADE;
-						bullets.createMultiple(5000, 'bullet');
-						bullets.setAll('anchor.x', 0.5);
+						bullets.createMultiple(40, 'bullet');
+						bullets.setAll('anchor.x', 1);
 						bullets.setAll('anchor.y', 1);
 						bullets.setAll('outOfBoundsKill', true);
 						bullets.setAll('checkWorldBounds', true);
@@ -107,7 +107,7 @@
 						bossBullets.enableBody = true;
 						bossBullets.physicsBodyType = Phaser.Physics.ARCADE;
 						bossBullets.createMultiple(30, 'bullet2');
-						bossBullets.setAll('anchor.x', 0.5);
+						bossBullets.setAll('anchor.x', 1);
 						bossBullets.setAll('anchor.y', 1);
 						bossBullets.setAll('outOfBoundsKill', true);
 						bossBullets.setAll('checkWorldBounds', true);

@@ -106,7 +106,7 @@
 						bossBullets.enableBody = true;
 						bossBullets.physicsBodyType = Phaser.Physics.ARCADE;
 						bossBullets.createMultiple(30, 'bullet2');
-						bossBullets.setAll('anchor.x', 0.5);
+						bossBullets.setAll('anchor.x', 1);
 						bossBullets.setAll('anchor.y', 1);
 						bossBullets.setAll('outOfBoundsKill', true);
 						bossBullets.setAll('checkWorldBounds', true);
@@ -144,12 +144,11 @@
 						dynamite = game.add.group();
 						dynamite.enableBody = true;
 						dynamite.physicsBodyType = Phaser.Physics.ARCADE;
-						dynamite.createMultiple(5, 'dynamite');
+						dynamite.createMultiple(2, 'dynamite');
 						dynamite.setAll('anchor.x', 1);
 						dynamite.setAll('anchor.y', 1);
 						dynamite.setAll('scale.x', 1);
-						dynamite.setAll('scale.y',1);
-						dynamite.setAll('angle', 0);
+						dynamite.setAll('scale.y', 1);
 			
 						//  And some controls to play the game with
 						cursors = game.input.keyboard.createCursorKeys();
